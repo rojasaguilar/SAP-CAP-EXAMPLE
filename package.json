@@ -1,0 +1,29 @@
+{
+  "name": "express-cds-proyect",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@sap/cds": "^9",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^4",
+    "mongoose": "^8.18.3"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "dev": "cds watch"
+  },
+  "private": true,
+  "files": [
+    "srv"
+  ],
+  "cds": {
+    "folders": {
+      "db": "srv/api/models",
+      "srv": "srv/api/routes"
+    }
+  }
+}
