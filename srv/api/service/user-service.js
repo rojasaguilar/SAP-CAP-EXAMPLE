@@ -17,7 +17,6 @@ AddOneUser = async (user) => {
 };
 
 DeleteOneUser = async (id) => {
-  console.log(id);
   try {
     const user = await userSchema.findOneAndDelete({ USERID: id });
     if (user) {
@@ -34,8 +33,28 @@ DeleteOneUser = async (id) => {
   }
 };
 
+UpdateOneUser = async(user) => {
+  const {USERID} = user;
+  try {
+    const updatedUser = await userSchema.findOneAndUpdate({USERID}, user, {new: true});
+    if(updatedUser){
+      return JSON.stringify({
+        status: 200, 
+        message: `User ${USERID} updated`,
+        data: updatedUser
+      });
+    }
+    const notFoundError = new Error(`User with ID ${USERID} not found`);
+    notFoundError.code = 404;
+    throw notFoundError;
+  } catch (error) {
+    throw error;
+  }
+}
+
 module.exports = {
   GetAllUsers,
   AddOneUser,
   DeleteOneUser,
+  UpdateOneUser
 };

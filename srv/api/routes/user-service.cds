@@ -19,4 +19,9 @@ service UserServiceRoute @(path: '/api/users'){
     @path : 'deleteOne'
     action deleteOne(user : UserSrv)
     returns array of UserSrv;
+
+    @Core.Description: 'updateOne-user'
+    @path : 'updateOne'
+    action updateOne(user: UserSrv)
+    returns array of UserSrv;
 }

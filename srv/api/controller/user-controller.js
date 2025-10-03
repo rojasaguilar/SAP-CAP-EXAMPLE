@@ -16,7 +16,12 @@ class UserClass extends cds.ApplicationService{
 
         this.on('deleteOne', async(req) => {
             const {USERID} = req.data.user;
-            return User.DeleteOneUser(USERID);
+            return await User.DeleteOneUser(USERID);
+        });
+
+        this.on('updateOne', async(req) => {
+            const {user} = req.data;
+            return await User.UpdateOneUser(user);
         })
         return await super.init();
     };
